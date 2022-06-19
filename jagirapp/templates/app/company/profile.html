@@ -1,0 +1,116 @@
+{% extends "app/company/base1.html" %}
+{% block content %}
+
+            <div id="layoutSidenav_content">
+                <main>
+                    
+                        <div class="container float-upper">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7">
+                                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Company Profile</h3></div>
+                                        <div class="card-body">
+                                            <form method="POST" action="{% url 'updatecompanyprofile' pk=request.session.id %}" name="contact-form" id="contact-form3" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputFirstName" type="text" name="firstname" value="{{comp.firstname}}" placeholder="Enter your first name" />
+                                                            <label for="inputFirstName">First name</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputLastName" type="text" name="lastname" value="{{comp.lastname}}" placeholder="Enter your last name" />
+                                                            <label for="inputLastName">Last name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputEmailAddress" type="text" name="email" value="{{user.email}}" placeholder="Enter your email address" />
+                                                            <label for="inputEmailAddress">Email address</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputCompanyName" type="text" name="company_name" value="{{comp.company_name}}" placeholder="Enter your company name" />
+                                                            <label for="inputCompanyName">Company Name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputState" type="text" name="state" value="{{comp.state}}" placeholder="Enter your state" />
+                                                            <label for="inputState">State</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputCity" type="text" name="city" value="{{comp.city}}" placeholder="Enter your city" />
+                                                            <label for="inputCity">City</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputCompanyContact" type="text" name="contact" value="{{comp.contact}}" placeholder="Enter your company contact" />
+                                                            <label for="inputCompanyContact">Company Contact</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputCompanyWebsite" type="text" name="website" value="{{comp.website}}" placeholder="Enter your company website" />
+                                                            <label for="inputCompanyWebsite">Company Website</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputCompanyAddress" type="text" name="address" value="{{comp.address}}" placeholder="Enter company address" />
+                                                            <label for="inputCompanyAddress">Company Address</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputCompanyDescription" type="text" name="description" value="{{comp.description}}" placeholder="Enter your company description" />
+                                                            <label for="inputCompanyDescription">Company Des.</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="list-inline mb-0">
+                                                            <li class="list-inline-item">
+                                                                <div class="input-group mt-2 mb-2">
+                                                                    <div class="custom-file">
+                                                                        <input type="file" class="custom-file-input" id="logo_pic" aria-describedby="inputGroupFileAddon01" name="logo_pic" value="{{comp.logo_pic}}" >
+                                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i> Upload Files</label>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-inline-item">
+                                                                <h6 class="text-muted mb-0">Upload Company Logo</h6>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="mt-4 mb-0">
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </main>
+            </div>
+                
+{% endblock %}

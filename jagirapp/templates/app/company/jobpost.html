@@ -1,0 +1,134 @@
+{% extends "app/company/base1.html" %}
+{% block content %}
+
+            <div id="layoutSidenav_content">
+                <main>
+                    
+                        <div class="container float-upper">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7">
+                                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Job Post Form</h3></div>
+                                            {% if msg %}
+                                                <h4 style="color:green;">{{msg}}</h4>
+                                            {% endif %}
+                                        <div class="card-body">
+                                            <form method="POST" action="{% url 'jobdetails' pk=request.session.id %}" name="contact-form" id="contact-form3" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputJobName" type="text" name="jobname"  placeholder="Enter job name" />
+                                                            <label for="inputJobName">Job name</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputCompanyName" type="text" name="companyname"  placeholder="Enter company name" />
+                                                            <label for="inputCompanyName">Company name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputCompanyAddress" type="text" name="companyaddress"  placeholder="Enter company address" />
+                                                            <label for="inputCompanyAddress">Company address</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputJobDescription" type="text" name="jobdescription" placeholder="Enter your job description" />
+                                                            <label for="inputJobDescription">Job Description</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputQualification" type="text" name="qualification"  placeholder="Enter your qualification" />
+                                                            <label for="inputQualification">Qualification</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputResponsibilities" type="text" name="responsibilities"  placeholder="Enter your responsibilities" />
+                                                            <label for="inputResponsibilities">Responsibilities</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputLocation" type="text" name="location"  placeholder="Enter your location" />
+                                                            <label for="inputLocation">Location</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputCompanyWebsite" type="text" name="website"  placeholder="Enter your company website" />
+                                                            <label for="inputCompanyWebsite">Company Website</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputCompanyEmail" type="text" name="companyemail"  placeholder="Enter company email" />
+                                                            <label for="inputCompanyEmail">Company Email</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputCompanyContact" type="text" name="companycontact"  placeholder="Enter your company contact" />
+                                                            <label for="inputCompanyContact">Company Contact</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputSalaryPackage" type="text" name="salarypackage"  placeholder="Enter salary package" />
+                                                            <label for="inputSalaryPackage">Salary Package</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputExperience" type="text" name="experience"  placeholder="Enter your experience" />
+                                                            <label for="inputExperience">Experience</label>
+                                                        </div>
+                                                    </div>  
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="list-inline mb-0">
+                                                            <li class="list-inline-item">
+                                                                <div class="input-group mt-2 mb-2">
+                                                                    <div class="custom-file">
+                                                                        <input type="file" class="custom-file-input" id="logo_pic" aria-describedby="inputGroupFileAddon01" name="logo_pic" value="{{comp.logo_pic}}" >
+                                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i> Upload Files</label>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-inline-item">
+                                                                <h6 class="text-muted mb-0">Upload Company Logo</h6>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="mt-4 mb-0">
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>>
+            </div>    
+                
+{% endblock %}

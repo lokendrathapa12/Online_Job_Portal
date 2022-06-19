@@ -1,0 +1,237 @@
+{% extends "app/base1.html" %}
+{% block content %}
+    <!-- Start home -->
+    <section class="bg-half page-next-level"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">Apply For Job</h4>
+                        <ul class="page-next d-inline-block mb-0">
+                            <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
+                            <li>
+                                <span class="text-uppercase text-white font-weight-bold">Apply Job</span> 
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+    <!-- POST A JOB START -->
+
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="rounded shadow bg-white p-4">
+                        <div class="custom-form">
+                            <div id="message3"></div>
+                            {% if user %}
+                            {% if can %}
+                            {% if job %}
+
+                            <form method="POST" action="{% url 'applyjoblist' pk=job.id %}" name="contact-form" id="contact-form3" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                <h4 class="text-dark mb-3">Enetr Your Details :</h4>
+                                {% if msg %}
+                                <h4 style="color: red;">{{msg}}</h4>
+                                {% endif %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Firstname</label>
+                                            <input id="firstname" name="firstname" type="text" class="form-control resume" placeholder="Enter your Firstname" value="{{can.firstname}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Lastname</label>
+                                            <input id="lastname" name="lastname" type="text" class="form-control resume" placeholder="Enter your Lastname" value="{{can.lastname}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Job Name</label>
+                                            <input id="minsalary" type="text" class="form-control resume" placeholder="Enter Job Name" name="minsalary" value="{{job.jobname}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">City</label>
+                                            <input id="firstname" name="city" type="text" class="form-control resume" placeholder="Enter your Cityname" value="{{can.city}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">State</label>
+                                            <input id="lastname" name="state" type="text" class="form-control resume" placeholder="Enter your Statename" value="{{can.state}}">
+                                        </div>
+                                    </div>
+                                </div>
+                       
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Minimum Salary</label>
+                                            <input id="minsalary" type="text" class="form-control resume" placeholder="Enter Minimum Salary" name="minsalary" value="{{can.min_salary}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Maximum Salary</label>
+                                            <input id="maxsalary" type="text" class="form-control resume" placeholder="Enter Maximum Salary" name="maxsalary" value="{{can.max_salary}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Education Level</label>
+                                            <div class="form-button">
+                                                <input id="highestedu" name="highestedu" type="text" class="form-control resume" placeholder="Eneter your Education Level" value="">
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Year of Experience</label>
+                                            <div class="form-button">
+                                                <input id="experience" name="experience" type="text" class="form-control resume" placeholder="Enter Your Experience" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Personal Website</label>
+                                            <input id="website" type="url" class="form-control resume" placeholder="Enter Your Website" name="website" value="" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Email Address</label>
+                                            <input id="email" type="text" class="form-control resume" placeholder="Enter Your Emailaddress" name="email" value="{{request.session.email}}" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Contact</label>
+                                            <input id="contact" type="text" class="form-control resume" placeholder="Enter Your Contact" name="contact" value="{{can.contact}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Gender</label>
+                                            {% if gender%}
+                                            <div class="form-button">
+                                                <input id="gender" name="gender" type="text" class="form-control resume" placeholder="" value="">
+                                            </div>
+                                            {% else %}
+                                            <div class="form-button">
+                                                <select class="nice-select rounded" name="gender" >
+                                                    <option data-display="Gender">Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Jobdescription</label>
+                                            <input id="jobdescription" type="text" class="form-control resume" placeholder="Write a message from your side" name="jobdescription" value="">
+                                        </div>
+                                       
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="input-group mt-2 mb-2">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="profile_pic" aria-describedby="inputGroupFileAddon01" name="profilepic" value="" >
+                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i> Upload Image Or Documents</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                             <li class="list-inline-item">
+                                                <h6 class="text-muted mb-0">Upload Your Resume</h6>
+                                            </li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 mt-2">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <!-- <a role="button" class="btn btn-primary" type="submit">Save</a> -->
+                                    </div>
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- subscribe start -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="float-left position-relative notification-icon mr-2">
+                        <i class="mdi mdi-bell-outline text-primary"></i>
+                        <span class="badge badge-pill badge-danger">1</span>
+                    </div>
+                    <h5 class="mt-2 mb-0">Your Job Notification</h5>
+                </div>
+                <div class="col-lg-8 col-md-7 mt-4 mt-sm-0">
+                    <form>
+                        <div class="form-group mb-0">
+                            <div class="input-group mb-0">
+                                <input name="email" id="email" type="email" class="form-control" placeholder="Your email :" required="" aria-describedby="newssubscribebtn">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary submitBnt" type="submit" id="newssubscribebtn">Subscribe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- subscribe end -->
+    <!-- Template Pages Load -->
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "app/admin/base1.html" %}
+{% block content %}
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+            
+                        <h1><li class="breadcrumb-item active">Job Post List</li></h1>
+                    </ol>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class=""></i>
+                            <h1>Feedback List</h1>
+                        </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Full Name</th>
+                                            <th>Email</th>
+                                            <th>Subject</th>
+                                            <th>Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Full Name</th>
+                                            <th>Email</th>
+                                            <th>Subject</th>
+                                            <th>Message</th>
+                                        </tr>
+                                    </tfoot>
+                                    {% if alluser %}
+                                    <tbody>
+                                        {% for i in alluser %}
+                                        <tr>
+                                            <td>{{i.fullname}}</td>
+                                            <td>{{i.email}}</td>
+                                            <td>{{i.subject}}</td>
+                                            <td>{{i.message}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {% endif %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+               
+{% endblock %}

@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hamro Jagir</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Themesdesign" />
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" type="text/css">
+
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/materialdesignicons.min.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/fontawesome.css' %}" />
+
+    <!-- selectize css -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/selectize.css' %}" />
+
+    <!--Slider-->
+    <link rel="stylesheet" href="{% static '/css/owl.carousel.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/owl.theme.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/owl.transitions.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/nice-select.css' %}" />
+
+    <!-- Custom  Css -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader -->
+
+    <!-- Navigation Bar-->
+    <header id="topnav" class="defaultscroll scroll-active">
+        <!-- Tagline STart -->
+        <div class="tagline">
+            <div class="container">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- Tagline End -->
+
+        <!-- Menu Start -->
+        <div class="container">
+            <!-- Logo container-->
+            <div>
+                <a href="{% url 'homepage' %}" class="logo">
+                    <img src="{% static '/images/logo-light.png' %}" alt="" class="logo-light" height="18" />
+                    <img src="{% static '/images/logo-dark.png' %}" alt="" class="logo-dark" height="18" />
+                </a>
+            </div>                 
+            <!--<div class="buy-button">
+                <a href="post-a-job.html" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Post a Job</a>
+            </div><!--end login button-->
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+    
+            <div id="navigation">
+                <!-- Navigation Menu-->   
+                <ul class="navigation-menu">
+                    <li><a href="{% url 'homepage' %}">Home</a></li>
+                    <li class="has-submenu">
+                        <a href="{% url 'signup' %}">Sign In</a><span class=""></span>
+    
+                    </li>
+                    <li class="has-submenu">
+                        <a href="{% url 'loginpage' %}">Log In</a><span class=""></span>
+    
+                    </li>
+                    <li class="has-submenu">
+                        <a href="{% url 'adminloginpage' %}">Admin LogIn</a><span class=""></span>
+                    </li>
+                    
+                </ul><!--end navigation menu-->
+            </div><!--end navigation-->
+        </div><!--end container-->
+        <!--end end-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+    <!-- Start Home -->
+    <section class="bg-half page-next-level"style=" background: url('static/images/job2.jpg') center center;"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">Job List view</h4>
+                        <ul class="page-next d-inline-block mb-0">
+                            <li><a href="{% url 'index' %}" class="text-uppercase font-weight-bold">Home</a></li>
+                            <li><a href="#" class="text-uppercase font-weight-bold">Jobs</a></li> 
+                            <li>
+                                <span class="text-uppercase text-white font-weight-bold">Job Listing</span> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+
+   
+
+                    <div class="row">
+                        {% if all_job %}
+                        {% for i in all_job %}
+                        <div class="col-lg-12 mt-4 pt-2">
+                            <div class="job-list-box border rounded">
+                                <div class="p-3">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-2">
+                                            {% if i.image %}
+                                            <div class="company-logo-img">
+                                                <img src="{{i.logo_pic.url}}" alt="" class="img-fluid mx-auto d-block">
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-lg-7 col-md-9">
+                                            <div class="job-list-desc">
+                                                <h6 class="mb-2"><a href="#" class="text-dark">{{i.jobname}}</a></h6>
+                                                <p class="text-muted mb-0"><i class="mdi mdi-bank mr-2"></i>{{i.companyname}}</p>
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item mr-3">
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker mr-2"></i>{{i.companyaddress}}</p>
+                                                    </li>
+
+                                                    <li class="list-inline-item">
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-clock-outline mr-2"></i>Experience:{{i.experience}}</p>
+                                                    </li>
+                                                   
+                                                </ul>
+                                                <li class="list-inline-item">
+                                                    <p class="text-muted mb-0"><i class="mdi mdi-phone mr-2"></i>contact:{{i.companycontact}}</p>
+                                                </li>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="job-list-button-sm text-right">
+                                                <span class="badge badge-success">{{i.responsibilities}}</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- footer start -->
+     <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                    <a href="javascript:void(0)"><img src="images/logo-light.png" height="20" alt=""></a>
+                    <p class="mt-4">At vero eos et accusamus et iusto odio dignissim os ducimus qui blanditiis praesentium</p>
+                    <ul class="social-icon social list-inline mb-0">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.google.com/" class="rounded"><i class="mdi mdi-google"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <p class="text-white mb-4 footer-list-title">Resources</p>
+                    <ul class="list-unstyled footer-list">
+                        <li><a href="{% url 'loginpage' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Login</a></li>
+                        <li><a href="{% url 'signup' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Signup</a></li>
+                        <li><a href="{% url 'adminloginpage' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Admin Login</a></li>
+                    </ul>
+                </div>
+            
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <p class="text-white mb-4 footer-list-title f-17">Business Hours</p>
+                    <ul class="list-unstyled text-foot mt-4 mb-0">
+                        <li>24/7 Hours</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+    <hr>
+    <footer class="footer footer-bar">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="">
+                        <p class="mb-0">© 2022 HamroJagir. <i class="mdi mdi-heart text-danger"></i> by Project Development Team of Nepalgunj Campus(2074)</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end container-->
+    </footer><!--end footer-->
+    <!-- Footer End -->
+
+    <!-- Back to top -->
+    <a href="#" class="back-to-top rounded text-center" id="back-to-top"> 
+        <i class="mdi mdi-chevron-up d-block"> </i> 
+    </a>
+    <!-- Back to top -->
+
+    <!-- javascript -->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static '/js/plugins.js' %}"></script>
+
+    <!-- selectize js -->
+    <script src="{% static '/js/selectize.min.js' %}"></script>
+    <script src="{% static '/js/jquery.nice-select.min.js' %}"></script>
+
+    <script src="{% static '/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static '/js/counter.int.js' %}"></script>
+
+    <script src="{% static '/js/app.js' %}"></script>
+    <script src="{% static '/js/home.js' %}"></script>
+
+</body>
+</html>
